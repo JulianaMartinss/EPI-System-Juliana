@@ -15,8 +15,8 @@ INSTALLED_APPS = [
     'rest_framework',
     # Apps do projeto
     'apps.colaboradores',
-    'epi',
-    'emprestimos',
+    'apps.epi',
+    'apps.emprestimos',
     'relatorios',
     
 ]

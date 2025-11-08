@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from apps.colaboradores.models import Colaborador
-from epi.models import EPI
-from emprestimos.models import Emprestimo
+from apps.epi.models import EPI
+from apps.emprestimos.models import Emprestimo
 from django.utils import timezone
 
 @login_required

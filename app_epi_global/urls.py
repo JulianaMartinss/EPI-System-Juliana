@@ -9,8 +9,8 @@ urlpatterns = [
     path("api/", include("apps.colaboradores.api_urls")),
     # Home: renderiza template simples em vez de redirecionar
     path("", HomeView.as_view(), name='home'),
-    path('epi/', include('epi.urls')),
-    path('emprestimos/', include('emprestimos.urls')),
+    path('epi/', include('apps.epi.urls')),
+    path('emprestimos/', include('apps.emprestimos.urls')),
     path('relatorios/', include('relatorios.urls')),
     path('accounts/', include('django.contrib.auth.urls')), 
 
