@@ -1,6 +1,6 @@
 ﻿# Sistema de Gerenciamento de EPI (Equipamentos de Proteção Individual)
 
-**Autor:** Juliana Martins 
+**Autores:** Luiz Gabriel Gazolli dos Santos / Juliana Martins 
 **Projeto:** Mini Projeto Django - Atividade 6  
 **Tema:** Sistema corporativo para controle de EPIs e colaboradores  
 
@@ -112,8 +112,9 @@ feat: adicionar CRUD de EPIs
 fix: corrigir carregamento de CSS estático
 style: atualizar layout único
 
-👨‍💻 Autora
+👨‍💻 Autores
 
-Desenvolvido por Juliana
+Desenvolvido por Luiz Gabriel Gazolli dos Santos / Juliana Martins 
 
 Projeto Mini Loja - EPI | 2025
+
