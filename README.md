@@ -7,8 +7,8 @@
 ---
 
 
-<img width="1295" height="615" alt="image" src="https://github.com/user-attachments/assets/c24697db-7d3c-4a08-a591-081b0464aaac" />
-<img width="1229" height="619" alt="image" src="https://github.com/user-attachments/assets/bd129570-42b0-48f7-b738-01949c15b8fb" />
+<img width="500" height="615" alt="image" src="https://github.com/user-attachments/assets/c24697db-7d3c-4a08-a591-081b0464aaac" />
+<img width="470" height="619" alt="image" src="https://github.com/user-attachments/assets/bd129570-42b0-48f7-b738-01949c15b8fb" />
 
 ---
 
@@ -123,5 +123,6 @@ style: atualizar layout único
 Desenvolvido por Luiz Gabriel Gazolli dos Santos / Juliana Martins 
 
 Projeto Mini Loja - EPI | 2025
+
 
 
