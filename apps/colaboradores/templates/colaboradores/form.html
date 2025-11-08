@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{% if object %}Editar{% else %}Novo{% endif %} Colaborador</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+    <a href="{% url 'colaboradores:lista' %}">Cancelar</a>
+  </form>
+{% endblock %}

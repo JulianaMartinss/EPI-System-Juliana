@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Colaboradores</h1>
+<a href="{% url 'colaboradores:criar' %}"><button>+ Novo colaborador</button></a>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>Setor</th>
+    <th>Foto</th>
+    <th>Ações</th>
+  </tr>
+  {% for colaborador in object_list %}
+  <tr>
+    <td>{{ colaborador.nome }}</td>
+    <td>{{ colaborador.cpf }}</td>
+    <td>{{ colaborador.setor }}</td>
+    <td>{% if colaborador.foto_colaborador %}<img src="{{ colaborador.foto_colaborador.url }}" width="60">{% endif %}</td>
+    <td>
+      <a href="{% url 'colaboradores:editar' colaborador.pk %}" class="btn-azul">Editar</a>
+      <a href="{% url 'colaboradores:excluir' colaborador.pk %}" class="btn-vermelho">Excluir</a>
+
+    </td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="5">Nenhum colaborador cadastrado.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Bem-vindo ao sistema de EPIs</h1>
+  <p>Gerencie colaboradores e seus EPIs.</p>
+  <h2>Últimos colaboradores</h2>
+  {% if ultimos_colaboradores %}
+    <ul>
+      {% for colaborador in ultimos_colaboradores %}
+        <li>
+          <strong>{{ colaborador.nome }}</strong> ({{ colaborador.setor }})
+          {% if colaborador.cpf %} — CPF: {{ colaborador.cpf }}{% endif %}
+          {% if colaborador.foto_colaborador %}<br><img src="{{ colaborador.foto_colaborador.url }}" width="60">{% endif %}
+          — <a href="{% url 'colaboradores:editar' colaborador.pk %}">editar</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <p><a href="{% url 'colaboradores:lista' %}">Ver todos os colaboradores</a></p>
+  {% else %}
+    <p>Nenhum colaborador cadastrado ainda. <a href="{% url 'colaboradores:criar' %}">Criar primeiro colaborador</a>.</p>
+  {% endif %}
+{% endblock %}

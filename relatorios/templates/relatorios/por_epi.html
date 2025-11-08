@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Relatório por EPI{% endblock %}
+{% block content %}
+<h2>🧰 Relatório por Tipo de EPI</h2>
+
+<form method="get">
+    <label for="epi">Selecione o EPI:</label>
+    <select name="epi" id="epi">
+        <option value="">Todos</option>
+        {% for e in epis %}
+            <option value="{{ e.id }}" {% if e.id|stringformat:"s" == epi_id %}selected{% endif %}>
+                {{ e.nome }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filtrar</button>
+</form>
+
+<table>
+    <tr>
+        <th>EPI</th>
+        <th>Colaborador</th>
+        <th>Qtd</th>
+        <th>Data Empréstimo</th>
+        <th>Devolvido</th>
+    </tr>
+    {% for e in emprestimos %}
+    <tr>
+        <td>{{ e.epi.nome }}</td>
+        <td>{{ e.colaborador.nome }}</td>
+        <td>{{ e.quantidade }}</td>
+        <td>{{ e.data_emprestimo|date:"d/m/Y" }}</td>
+        <td>{{ e.devolvido|yesno:"Sim,Não" }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">Nenhum registro encontrado.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}
