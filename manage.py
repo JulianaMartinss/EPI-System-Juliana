@@ -3,7 +3,7 @@ import os
 import sys
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'projeto_loja.settings.dev')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app_epi_global.settings.dev')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

@@ -12,5 +12,6 @@ urlpatterns = [
     path('epi/', include('epi.urls')),
     path('emprestimos/', include('emprestimos.urls')),
     path('relatorios/', include('relatorios.urls')),
+    path('accounts/', include('django.contrib.auth.urls')), 
 
 ]

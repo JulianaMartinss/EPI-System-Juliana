@@ -31,7 +31,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'projeto_loja.urls'
+ROOT_URLCONF = 'app_epi_global.urls'
 
 TEMPLATES = [
     {
@@ -49,7 +49,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'projeto_loja.wsgi.application'
+WSGI_APPLICATION = 'app_epi_global.wsgi.application'
 
 DATABASES = {
     'default': {

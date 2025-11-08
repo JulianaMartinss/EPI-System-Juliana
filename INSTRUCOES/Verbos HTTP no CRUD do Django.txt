@@ -1,12 +1,42 @@
 Verbos HTTP no CRUD do Django
 
 1) Mapa mental (CRUD ? Verbo ? URL ? Django)
-AçãoVerbo HTTPURL “RESTful” sugeridaEm views HTML (Django)Em API (DRF)ListarGET/clientes/ListView (só GET)list()DetalharGET/clientes/42/DetailView (só GET)retrieve()CriarGET (form) + POST (enviar)/clientes/novo/CreateView (GET/POST)create() (POST em /clientes/)AtualizarGET (form) + POST (enviar)/clientes/42/editar/UpdateView (GET/POST)update() (PUT/PATCH em /clientes/42/)ExcluirPOST (confirmação)/clientes/42/excluir/DeleteView (POST)destroy() (DELETE em /clientes/42/)Ponto-chave para alunos: HTML puro só envia GET e POST. Por isso, nas views “tradicionais” do Django, Update e Delete são feitos com POST (não com PUT/DELETE).
- Em APIs (Django REST Framework), aí sim usamos PUT/PATCH/DELETE de verdade.
+Aï¿½ï¿½o
+Verbo HTTP
+URL ï¿½RESTfulï¿½ sugerida
+Em views HTML (Django)
+Em API (DRF)
+Listar
+GET
+/clientes/
+ListView (sï¿½ GET)
+list()
+Detalhar
+GET
+/clientes/42/
+DetailView (sï¿½ GET)
+retrieve()
+Criar
+GET (form) + POST (enviar)
+/clientes/novo/
+CreateView (GET/POST)
+create() (POST em /clientes/)
+Atualizar
+GET (form) + POST (enviar)
+/clientes/42/editar/
+UpdateView (GET/POST)
+update() (PUT/PATCH em /clientes/42/)
+Excluir
+POST (confirmaï¿½ï¿½o)
+/clientes/42/excluir/
+DeleteView (POST)
+destroy() (DELETE em /clientes/42/)
+Ponto-chave para alunos: HTML puro sï¿½ envia GET e POST. Por isso, nas views ï¿½tradicionaisï¿½ do Django, Update e Delete sï¿½o feitos com POST (nï¿½o com PUT/DELETE).
+ Em APIs (Django REST Framework), aï¿½ sim usamos PUT/PATCH/DELETE de verdade.
 
-2) Views “tradicionais” (HTML) — como explicar
+2) Views ï¿½tradicionaisï¿½ (HTML) ï¿½ como explicar
 Exemplo: ClienteCreate (GET/POST)
-? GET: mostra o formulário vazio.
+? GET: mostra o formulï¿½rio vazio.
 
 ? POST: recebe os dados, valida e salva.
 
@@ -17,7 +47,7 @@ class ClienteCreate(CreateView):
     success_url = reverse_lazy("clientes:lista")  # POST bem-sucedido ? redirect
 
 Exemplo: ClienteUpdate (GET/POST)
-? GET: mostra o formulário preenchido.
+? GET: mostra o formulï¿½rio preenchido.
 
 ? POST: atualiza.
 
@@ -27,25 +57,25 @@ class ClienteUpdate(UpdateView):
     success_url = reverse_lazy("clientes:lista")
 
 Exemplo: ClienteDelete (POST)
-? GET: mostra página de confirmação.
+? GET: mostra pï¿½gina de confirmaï¿½ï¿½o.
 
 ? POST: exclui.
 
 class ClienteDelete(DeleteView):
     model = Cliente
     success_url = reverse_lazy("clientes:lista")
-
-Template didático (delete com POST)
+app_epi_global
+Template didï¿½tico (delete com POST)
 <form method="post">
   {% csrf_token %}
   <p>Tem certeza que deseja excluir {{ object }}?</p>
   <button type="submit">Excluir</button>
 </form>
 
-Destaque em aula: CSRF é obrigatório para métodos “não seguros” (POST/PUT/PATCH/DELETE) quando há sessão. Em HTML, use {% csrf_token %}. Em JS/AJAX, envie o header X-CSRFToken.
+Destaque em aula: CSRF ï¿½ obrigatï¿½rio para mï¿½todos ï¿½nï¿½o segurosï¿½ (POST/PUT/PATCH/DELETE) quando hï¿½ sessï¿½o. Em HTML, use {% csrf_token %}. Em JS/AJAX, envie o header X-CSRFToken.
 
-3) APIs com DRF — quando você quer usar os verbos “raiz”
-Se quiser ensinar os verbos puros (GET/POST/PUT/PATCH/DELETE), mostre o Django REST Framework. Um ModelViewSet já mapeia tudo:
+3) APIs com DRF ï¿½ quando vocï¿½ quer usar os verbos ï¿½raizï¿½
+Se quiser ensinar os verbos puros (GET/POST/PUT/PATCH/DELETE), mostre o Django REST Framework. Um ModelViewSet jï¿½ mapeia tudo:
 # apps/clientes/api.py
 from rest_framework import viewsets
 from .models import Cliente
@@ -89,7 +119,7 @@ Agora os verbos ficam assim:
 
 ? DELETE /api/clientes/42/ ? exclui
 
-Testes rápidos (para mostrar em sala)
+Testes rï¿½pidos (para mostrar em sala)
 # listar
 curl -X GET http://127.0.0.1:8000/api/clientes/
 
@@ -106,11 +136,11 @@ curl -X PATCH http://127.0.0.1:8000/api/clientes/1/ \
 # excluir
 curl -X DELETE http://127.0.0.1:8000/api/clientes/1/
 
-Em produção com sessão/CSRF, configure autenticação (token, JWT ou session auth) e envie o CSRF nos métodos “não seguros”.
+Em produï¿½ï¿½o com sessï¿½o/CSRF, configure autenticaï¿½ï¿½o (token, JWT ou session auth) e envie o CSRF nos mï¿½todos ï¿½nï¿½o segurosï¿½.
 
-4) “Method override” (se quiser simular PUT/DELETE em HTML)
-HTML não envia PUT/DELETE, mas você pode ensinar conceito com “override” via JS:
-// Exemplo: excluir via fetch (DELETE) num botão
+4) ï¿½Method overrideï¿½ (se quiser simular PUT/DELETE em HTML)
+HTML nï¿½o envia PUT/DELETE, mas vocï¿½ pode ensinar conceito com ï¿½overrideï¿½ via JS:
+// Exemplo: excluir via fetch (DELETE) num botï¿½o
 async function deletarCliente(id, csrfToken) {
   const resp = await fetch(`/api/clientes/${id}/`, {
     method: "DELETE",
@@ -119,45 +149,45 @@ async function deletarCliente(id, csrfToken) {
   if (resp.ok) location.reload();
 }
 
-Para pegar o CSRF do cookie (padrão Django):
+Para pegar o CSRF do cookie (padrï¿½o Django):
 function getCookie(name) {
   const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
   return v ? v.pop() : '';
 }
 const csrftoken = getCookie('csrftoken');
 
-Explique: em views HTML do Django não é comum usar DELETE/PUT; usamos POST para essas ações. Em APIs, sim, usamos os verbos corretamente.
+Explique: em views HTML do Django nï¿½o ï¿½ comum usar DELETE/PUT; usamos POST para essas aï¿½ï¿½es. Em APIs, sim, usamos os verbos corretamente.
 
-5) Atividade prática em sala (15–30 min)
+5) Atividade prï¿½tica em sala (15ï¿½30 min)
 1. Clientes HTML (CBV): implementar ListView, CreateView, UpdateView, DeleteView.
 
 2. Mesmos Clientes em API (DRF) com ModelViewSet.
 
 3. Comparar no quadro:
 
-? A mesma ação feita por POST em HTML vs PUT/DELETE em API.
+? A mesma aï¿½ï¿½o feita por POST em HTML vs PUT/DELETE em API.
 
 4. Desafio: fazer a tela de listagem chamar a API com fetch para excluir (DELETE) e atualizar (PATCH), explicando CSRF.
 
 
 6) Frases-resumo
-? “Em páginas HTML, quase tudo é GET/POST.”
+? ï¿½Em pï¿½ginas HTML, quase tudo ï¿½ GET/POST.ï¿½
 
-? “Em APIs, use GET/POST/PUT/PATCH/DELETE conforme o padrão REST.”
+? ï¿½Em APIs, use GET/POST/PUT/PATCH/DELETE conforme o padrï¿½o REST.ï¿½
 
-? “CSRF sempre que for método não seguro.”
+? ï¿½CSRF sempre que for mï¿½todo nï¿½o seguro.ï¿½
 
-? “O admin do Django usa POST para criar/editar/excluir (por HTML). DRF usa todos os verbos.”
+? ï¿½O admin do Django usa POST para criar/editar/excluir (por HTML). DRF usa todos os verbos.ï¿½
 
 
-continuação mini-projeto Django com:
+continuaï¿½ï¿½o mini-projeto Django com:
 ? CRUD HTML (CBVs) para clientes
 
-? API DRF para clientes com verbos HTTP “puros” (GET/POST/PUT/PATCH/DELETE)
+? API DRF para clientes com verbos HTTP ï¿½purosï¿½ (GET/POST/PUT/PATCH/DELETE)
 
 ? Settings separados (base.py e dev.py)
 
-? Templates e CSS básicos
+? Templates e CSS bï¿½sicos
 
 Realizar Fork ou baixar o projeto .zip https://github.com/IrlandioProf/mini_projeto_django_loja
 Como rodar (Windows / PowerShell)
@@ -168,7 +198,7 @@ cd mini_projeto_django_loja
 python -m venv venv
 .\venv\Scripts\activate
 
-# 3) instale dependências
+# 3) instale dependï¿½ncias
 pip install -r requirements.txt
 
 # 4) migre, crie superuser e execute
@@ -185,19 +215,19 @@ Onde testar os verbos HTTP
 
 ? API (REST):
 
-? GET /api/clientes/ — listar
+? GET /api/clientes/ ï¿½ listar
 
-? POST /api/clientes/ — criar
+? POST /api/clientes/ ï¿½ criar
 
-? GET /api/clientes/<id>/ — detalhe
+? GET /api/clientes/<id>/ ï¿½ detalhe
 
-? PUT /api/clientes/<id>/ — atualizar tudo
+? PUT /api/clientes/<id>/ ï¿½ atualizar tudo
 
-? PATCH /api/clientes/<id>/ — atualizar parcial
+? PATCH /api/clientes/<id>/ ï¿½ atualizar parcial
 
-? DELETE /api/clientes/<id>/ — excluir
+? DELETE /api/clientes/<id>/ ï¿½ excluir
 
-Exemplos rápidos (com curl):
+Exemplos rï¿½pidos (com curl):
 # criar
 curl -X POST http://127.0.0.1:8000/api/clientes/ \
   -H "Content-Type: application/json" \
@@ -218,11 +248,11 @@ curl -X DELETE http://127.0.0.1:8000/api/clientes/1/
 mini-projeto Django com:
 ? CRUD HTML (CBVs) para clientes
 
-? API DRF para clientes com verbos HTTP “puros” (GET/POST/PUT/PATCH/DELETE)
+? API DRF para clientes com verbos HTTP ï¿½purosï¿½ (GET/POST/PUT/PATCH/DELETE)
 
 ? Settings separados (base.py e dev.py)
 
-? Templates e CSS básicos
+? Templates e CSS bï¿½sicos
 
 Baixar o projeto .zip
 Como rodar (Windows / PowerShell)
@@ -233,7 +263,7 @@ cd mini_projeto_django_loja
 python -m venv venv
 .\venv\Scripts\activate
 
-# 3) instale dependências
+# 3) instale dependï¿½ncias
 pip install -r requirements.txt
 
 # 4) migre, crie superuser e execute
@@ -250,19 +280,19 @@ Onde testar os verbos HTTP
 
 ? API (REST):
 
-? GET /api/clientes/ — listar
+? GET /api/clientes/ ï¿½ listar
 
-? POST /api/clientes/ — criar
+? POST /api/clientes/ ï¿½ criar
 
-? GET /api/clientes/<id>/ — detalhe
+? GET /api/clientes/<id>/ ï¿½ detalhe
 
-? PUT /api/clientes/<id>/ — atualizar tudo
+? PUT /api/clientes/<id>/ ï¿½ atualizar tudo
 
-? PATCH /api/clientes/<id>/ — atualizar parcial
+? PATCH /api/clientes/<id>/ ï¿½ atualizar parcial
 
-? DELETE /api/clientes/<id>/ — excluir
+? DELETE /api/clientes/<id>/ ï¿½ excluir
 
-Exemplos rápidos (com curl):
+Exemplos rï¿½pidos (com curl):
 # criar
 curl -X POST http://127.0.0.1:8000/api/clientes/ \
   -H "Content-Type: application/json" \
@@ -276,11 +306,11 @@ curl -X PATCH http://127.0.0.1:8000/api/clientes/1/ \
 # excluir
 curl -X DELETE http://127.0.0.1:8000/api/clientes/1/
 
-Quer que eu gere, no mesmo padrão, os apps produtos e vendas (com ItemVenda e formset inline) para você plugar depois?
-Você disse:
+Quer que eu gere, no mesmo padrï¿½o, os apps produtos e vendas (com ItemVenda e formset inline) para vocï¿½ plugar depois?
+Vocï¿½ disse:
 gere sim
 O ChatGPT disse:
-Professor Irlândio, está pronto ??
+Professor Irlï¿½ndio, estï¿½ pronto ??
 MonteI um projeto completo com:
 ? clientes (CRUD web + API REST)
 
@@ -288,15 +318,15 @@ MonteI um projeto completo com:
 
 ? vendas (lista/detalhe web + API REST com itens da venda)
 
-? Admin configurado pros três módulos
-
+? Admin configurado pros trï¿½s mï¿½dulos
+app_epi_global
 ? Templates HTML prontos
 
 ? Settings separados (base.py / dev.py)
 
 ? Arquitetura mais limpa (apps/)
 
-Você pode baixar aqui:
+Vocï¿½ pode baixar aqui:
 Baixar o projeto completo (.zip)
 Passo a passo pra rodar esse projeto
 1. Descompacte o zip e entre na pasta mini_projeto_django_loja_ext.
@@ -306,11 +336,11 @@ Passo a passo pra rodar esse projeto
 python -m venv venv
 .\venv\Scripts\activate
 
-3. Instale as dependências:
+3. Instale as dependï¿½ncias:
 
 pip install -r requirements.txt
 
-4. Aplique as migrations e crie um superusuário:
+4. Aplique as migrations e crie um superusuï¿½rio:
 
 python manage.py migrate
 python manage.py createsuperuser
@@ -319,7 +349,7 @@ python manage.py createsuperuser
 
 python manage.py runserver
 
-Esse manage.py já está configurado pra usar projeto_loja.settings.dev.
+Esse manage.py jï¿½ estï¿½ configurado pra usar projeto_loja.settings.dev.
 
 Rotas web (HTML com GET/POST)
 ? Clientes
@@ -336,7 +366,7 @@ Rotas web (HTML com GET/POST)
 
 ? http://127.0.0.1:8000/produtos/
 
-? etc. mesmo padrão de rotas
+? etc. mesmo padrï¿½o de rotas
 
 ? Vendas
 
@@ -348,7 +378,7 @@ Rotas web (HTML com GET/POST)
 
 ? http://127.0.0.1:8000/admin/
 
-Essas telas usam só GET (pra listar/mostrar formulário) e POST (pra salvar/editar/excluir). Isso é ótimo pra aula sobre verbos HTTP limitados pelo HTML tradicional.
+Essas telas usam sï¿½ GET (pra listar/mostrar formulï¿½rio) e POST (pra salvar/editar/excluir). Isso ï¿½ ï¿½timo pra aula sobre verbos HTTP limitados pelo HTML tradicional.
 
 Rotas API REST (verbos HTTP completos)
 ? Clientes
@@ -367,7 +397,7 @@ Rotas API REST (verbos HTTP completos)
 
 ? Produtos
 
-? Mesmo padrão em /api/produtos/
+? Mesmo padrï¿½o em /api/produtos/
 
 ? Vendas
 
@@ -387,7 +417,7 @@ Rotas API REST (verbos HTTP completos)
 
 ? /api/itens-venda/ com os mesmos verbos
 
-Com isso você consegue ensinar assim pros alunos:
+Com isso vocï¿½ consegue ensinar assim pros alunos:
 ? GET ? buscar dados (listar, detalhar)
 
 ? POST ? criar novo registro
@@ -396,19 +426,19 @@ Com isso você consegue ensinar assim pros alunos:
 
 ? DELETE ? remover registro
 
-E pode comparar diretamente com as telas HTML, onde edição/remoção ainda é feita via POST, explicando limitação do <form> clássico.
+E pode comparar diretamente com as telas HTML, onde ediï¿½ï¿½o/remoï¿½ï¿½o ainda ï¿½ feita via POST, explicando limitaï¿½ï¿½o do <form> clï¿½ssico.
 
-Sugestão pedagógica direta
+Sugestï¿½o pedagï¿½gica direta
 Mostre pros alunos:
 1. A tela /clientes/ (interface humana).
 
-2. A rota /api/clientes/ (interface máquina).
+2. A rota /api/clientes/ (interface mï¿½quina).
 
 3. O mesmo dado aparecendo nos dois lugares.
 
-4. Depois, no navegador mesmo, acessar /api/vendas/: eles já conseguem ver cada venda e os itens (itens) aninhados.
+4. Depois, no navegador mesmo, acessar /api/vendas/: eles jï¿½ conseguem ver cada venda e os itens (itens) aninhados.
 
-Isso já dá base pra:
+Isso jï¿½ dï¿½ base pra:
 ? Front-end tradicional (Django templates)
 
 ? Front-end SPA / mobile usando API
