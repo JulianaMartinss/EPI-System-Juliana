@@ -1,19 +1,25 @@
 
+/* =============================== */
+/*          ESTILOS GERAIS         */
+/* =============================== */
+
 body {
-    background-color: #f7f7f7;;
+    background-color: #f7f7f7;
     font-family: 'Garamond', serif;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
-/* Cabeçalho */
+/* =============================== */
+/*            CABEÇALHO            */
+/* =============================== */
+
 .header {
     background: #1a237e;
-    color: #ffffff;;
+    color: #ffffff;
     text-align: center;
     padding: 0;
-    border-bottom: 3px solid #00bcd4;
 }
 
 .header h1 {
@@ -23,22 +29,24 @@ body {
     padding: 15px 0;
 }
 
-/* Navegação */
+/* =============================== */
+/*          NAVEGAÇÃO              */
+/* =============================== */
+
 .nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
     background-color: #1E3A8A;
     padding: 8px 0;
-    
 }
 
 .nav a {
     color: #ffffff;
     text-decoration: none;
-    font-weight: 600; 
+    font-weight: 600;
     padding: 8px 12px;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
@@ -49,12 +57,14 @@ body {
 }
 
 .nav a:hover {
-    background-color: #ffffff; 
-    color: #1a237e; 
-    transform: none; 
+    background-color: #ffffff;
+    color: #1a237e;
 }
 
-/* Conteúdo */
+/* =============================== */
+/*           CONTEÚDO              */
+/* =============================== */
+
 .content {
     max-width: 900px;
     margin: 40px auto;
@@ -64,7 +74,10 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Rodapé */
+/* =============================== */
+/*             RODAPÉ              */
+/* =============================== */
+
 .footer {
     text-align: center;
     background: #1a237e;
@@ -72,11 +85,76 @@ body {
     padding: 15px 0;
     margin-top: 0;
     font-size: 14px;
-
 }
 
-/* Botões */
-button, input[type="submit"] {
+/* =============================== */
+/*        PÁGINA INICIAL (HOME)    */
+/* =============================== */
+
+.home-container {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.home-header h1 {
+    color: #1a237e;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.home-header p {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* =============================== */
+/*         COLABORADORES           */
+/* =============================== */
+
+.colaboradores-section {
+    margin-top: 30px;
+}
+
+.colaboradores-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.colaborador-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.foto-colaborador {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.colaborador-info {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.ver-todos {
+    margin-top: 20px;
+}
+
+/* =============================== */
+/*             BOTÕES              */
+/* =============================== */
+
+button,
+input[type="submit"] {
     background-color: #1E3A8A;
     color: #F3F4F6;
     border: none;
@@ -88,14 +166,15 @@ button, input[type="submit"] {
     transition: background-color 0.3s, transform 0.2s;
 }
 
-button:hover, input[type="submit"]:hover {
+button:hover,
+input[type="submit"]:hover {
     background-color: #3B82F6;
     transform: scale(1.05);
 }
 
-
-
-.btn-azul, .btn-vermelho {
+/* Botões específicos */
+.btn-azul,
+.btn-vermelho {
     display: inline-block;
     color: #fff;
     font-size: 15px;
@@ -108,15 +187,12 @@ button:hover, input[type="submit"]:hover {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-
-/* Botões Colaboradores*/
 /* Botão azul (Editar) */
 .btn-azul {
     background-color: #0d3b8c;
 }
 
 .btn-azul:hover {
-    color: #ffffff;
     background-color: #3B82F6;
     transform: scale(1.03);
 }
@@ -127,23 +203,42 @@ button:hover, input[type="submit"]:hover {
 }
 
 .btn-vermelho:hover {
-    color: #ffffff;
     background-color: #a31506;
     transform: scale(1.03);
 }
 
-
-
-/* Tabelas */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+/* Botão Novo Colaborador */
+.botao-novo {
+    display: inline-block;
+    background-color: #0d3b8c;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-table th, table td {
+/* =============================== */
+/*             TABELAS             */
+/* =============================== */
+
+table {
+    width: 100%;
+    border-collapse: separate; /* <- muda aqui */
+    border-spacing: 0;         /* remove espaços entre células */
+    margin-top: 20px;
+    border-radius: 10px;       /* arredonda cantos */
+    overflow: hidden;          /* garante que o fundo arredonde */
+}
+
+table th,
+table td {
     border: 1px solid #3B82F6;
-    padding: 10px;
+    padding: 12px 14px;
     text-align: left;
 }
 
@@ -152,7 +247,10 @@ table th {
     color: #F3F4F6;
 }
 
-/* Links gerais */
+/* =============================== */
+/*            LINKS GERAIS         */
+/* =============================== */
+
 a {
     color: #1E3A8A;
 }
@@ -161,26 +259,15 @@ a:hover {
     color: #3B82F6;
 }
 
-/* === Menu Dropdown (Relatórios) === */
-.nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
+/* =============================== */
+/*          MENU DROPDOWN          */
+/* =============================== */
 
-/* mantém estilo dos links já existentes */
-
-
-
-/* Dropdown container */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* botão do dropdown (aparece como link) */
 .dropbtn {
     background: transparent;
     color: #F3F4F6;
@@ -193,21 +280,19 @@ a:hover {
     padding: 6px 8px;
 }
 
-/* container que aparecerá (inicialmente invisível) */
 .dropdown-content {
     display: none;
     position: absolute;
-    right: 0; /* alinha à direita do botão (ajuste se desejar) */
+    right: 0;
     background-color: #1E3A8A;
     min-width: 220px;
     border-radius: 8px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
     z-index: 9999;
     text-align: left;
     padding: 6px 0;
 }
 
-/* itens do menu */
 .dropdown-content a {
     color: #F3F4F6;
     padding: 10px 16px;
@@ -219,25 +304,16 @@ a:hover {
 .dropdown-content a:hover,
 .dropdown-content a:focus {
     background-color: #3B82F6;
-    color: #F3F4F6;
 }
 
-/* Exibir via hover (desktop) */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Classe que o JS vai alternar (força visibilidade) */
-.dropdown.open .dropdown-content {
-    display: block;
-}
-
-/* acessibilidade / foco no botão - mostrar dropdown via teclado */
+/* Mostrar menu ao passar o mouse */
+.dropdown:hover .dropdown-content,
+.dropdown.open .dropdown-content,
 .dropbtn:focus + .dropdown-content {
     display: block;
 }
 
-/* small screens adjustments */
+/* Responsividade */
 @media (max-width: 700px) {
     .dropdown-content {
         right: auto;
@@ -245,19 +321,3 @@ a:hover {
         min-width: 180px;
     }
 }
-
-.botao-novo {
-    display: inline-block;
-    background-color: #0d3b8c; /* azul escuro */
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 10px 22px;
-    border: none;
-    border-radius: 8px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-

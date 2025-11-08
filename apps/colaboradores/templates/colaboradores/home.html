@@ -1,21 +1,45 @@
 {% extends 'base.html' %}
+{% block title %}Início | Gerenciamento de EPI{% endblock %}
 {% block content %}
-  <h1>Bem-vindo ao sistema de EPIs</h1>
-  <p>Gerencie colaboradores e seus EPIs.</p>
-  <h2>Últimos colaboradores</h2>
-  {% if ultimos_colaboradores %}
-    <ul>
-      {% for colaborador in ultimos_colaboradores %}
-        <li>
-          <strong>{{ colaborador.nome }}</strong> ({{ colaborador.setor }})
-          {% if colaborador.cpf %} — CPF: {{ colaborador.cpf }}{% endif %}
-          {% if colaborador.foto_colaborador %}<br><img src="{{ colaborador.foto_colaborador.url }}" width="60">{% endif %}
-          — <a href="{% url 'colaboradores:editar' colaborador.pk %}">editar</a>
-        </li>
-      {% endfor %}
-    </ul>
-    <p><a href="{% url 'colaboradores:lista' %}">Ver todos os colaboradores</a></p>
-  {% else %}
-    <p>Nenhum colaborador cadastrado ainda. <a href="{% url 'colaboradores:criar' %}">Criar primeiro colaborador</a>.</p>
-  {% endif %}
+
+  <section class="home-container">
+    <div class="home-header">
+      <h1>👋 Bem-vindo(a)</h1>
+      <p>Gerencie colaboradores, EPIs e empréstimos de forma simples e eficiente.</p>
+    </div>
+
+    <div class="colaboradores-section">
+      <h2>Últimos Colaboradores</h2>
+
+      {% if ultimos_colaboradores %}
+        <div class="colaboradores-lista">
+          {% for colaborador in ultimos_colaboradores %}
+            <div class="colaborador-card">
+              {% if colaborador.foto_colaborador %}
+                <img src="{{ colaborador.foto_colaborador.url }}" alt="{{ colaborador.nome }}" class="foto-colaborador">
+              {% endif %}
+              <div class="colaborador-info">
+                <strong>{{ colaborador.nome }}</strong><br>
+                <small>{{ colaborador.setor }}</small><br>
+                {% if colaborador.cpf %}
+                  <small>CPF: {{ colaborador.cpf }}</small>
+                {% endif %}
+              </div>
+              <a href="{% url 'colaboradores:editar' colaborador.pk %}" class="btn-azul">Editar</a>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="ver-todos">
+          <a href="{% url 'colaboradores:lista' %}" class="btn-azul">Ver todos os colaboradores</a>
+        </div>
+      {% else %}
+        <p>Nenhum colaborador cadastrado ainda. 
+          <a href="{% url 'colaboradores:criar' %}" class="btn-azul">Criar primeiro colaborador</a>.
+        </p>
+      {% endif %}
+    </div>
+  </section>
+
 {% endblock %}
+
