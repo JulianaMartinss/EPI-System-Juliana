@@ -3,7 +3,7 @@
   <h1>Excluir colaborador</h1>
   <p>Tem certeza que deseja excluir <strong>{{ object.nome }}</strong>?</p>
   <form method="post">{% csrf_token %}
-    <button type="submit">Sim, excluir</button>
-    <a href="{% url 'colaboradores:lista' %}">Cancelar</a>
+    <button type="submit" class="btn-verde">Sim, excluir</button>
+    <a href="{% url 'colaboradores:lista' %}" class="btn-vermelho">Cancelar</a>
   </form>
 {% endblock %}

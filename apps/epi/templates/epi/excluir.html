@@ -4,7 +4,7 @@
 <h2>Tem certeza que deseja excluir "{{ epi.nome }}"?</h2>
 <form method="POST">
     {% csrf_token %}
-    <button type="submit">Confirmar</button>
-    <a href="{% url 'listar_epis' %}">Cancelar</a>
+    <button type="submit" class="btn-verde">Confirmar</button>
+    <a href="{% url 'listar_epis' %}" class="btn-vermelho">Cancelar</a>
 </form>
 {% endblock %}

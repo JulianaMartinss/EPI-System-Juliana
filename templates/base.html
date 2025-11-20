@@ -1,79 +1,112 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Gerenciamento de EPI{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header class="header">
-        <h1>Gerenciamento de EPI</h1>
-        <nav class="nav">
-    <a href="/"><i class="fa-solid fa-house"></i> Início</a>
-    <a href="/admin/"><i class="fa-solid fa-gear"></i> Administração</a>
-    <a href="/colaboradores/"><i class="fa-solid fa-users"></i> Colaboradores</a>
-    <a href="/epi/"><i class="fa-solid fa-shield-halved"></i> EPIs</a>
-    <a href="/emprestimos/"><i class="fa-solid fa-file-contract"></i> Empréstimos</a>
+      <h1>Gerenciamento de EPI</h1>
+      <nav class="nav">
+        <a href="/"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="/admin/"><i class="fa-solid fa-gear"></i> Administração</a>
+        <a href="/colaboradores/"
+          ><i class="fa-solid fa-users"></i> Colaboradores</a
+        >
+        <a href="/epi/"><i class="fa-solid fa-shield-halved"></i> EPIs</a>
+        <a href="/emprestimos/"
+          ><i class="fa-solid fa-file-contract"></i> Empréstimos</a
+        >
 
-    <!-- Dropdown para Relatórios -->
-    <div class="dropdown" id="reportsDropdown">
-        <button class="dropbtn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-chart-column"></i> Relatórios ▾</button>
-        <div class="dropdown-content" aria-label="submenu relatórios">
-            <a href="/relatorios/colaborador/"><i class="fa-solid fa-user"></i> Por Colaborador</a>
-            <a href="/relatorios/epi/"><i class="fa-solid fa-toolbox"></i> Por Tipo de EPI</a>
-            <a href="/relatorios/vencidos/"><i class="fa-solid fa-triangle-exclamation"></i> EPIs Vencidos</a>
+        <!-- Dropdown para Relatórios -->
+        <div class="dropdown" id="reportsDropdown">
+          <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-chart-column"></i> Relatórios ▾
+          </button>
+          <div class="dropdown-content" aria-label="submenu relatórios">
+            <a href="/relatorios/colaborador/"
+              ><i class="fa-solid fa-user"></i> Por Colaborador</a
+            >
+            <a href="/relatorios/epi/"
+              ><i class="fa-solid fa-toolbox"></i> Por Tipo de EPI</a
+            >
+            <a href="/relatorios/vencidos/"
+              ><i class="fa-solid fa-triangle-exclamation"></i> EPIs Vencidos</a
+            >
+          </div>
         </div>
-    </div>
-</nav>
+      </nav>
     </header>
 
-    <main class="content">
-        {% block content %}
-        {% endblock %}
-    </main>
+    {% if messages %}
+    <div class="messages-container">
+      {% for message in messages %}
+      <div class="alert {{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <main class="content">{% block content %} {% endblock %}</main>
 
     <footer class="footer">
-        <p>© Projeto Loja - Otimizado e Criado por Juliana</p>
+      <p>© Projeto Loja - Otimizado e Criado por Juliana</p>
     </footer>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var dropdown = document.getElementById('reportsDropdown');
-    if (!dropdown) return;
-
-    var button = dropdown.querySelector('.dropbtn');
-
-    // Toggle via click (útil para touch)
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        var expanded = dropdown.classList.toggle('open');
-        // atualiza aria-expanded para acessibilidade
-        button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+setTimeout(function() {
+    document.querySelectorAll('.alert').forEach(function(el) {
+        el.style.transition = "opacity 0.5s";
+        el.style.opacity = "0";
+        setTimeout(() => el.remove(), 500);
     });
-
-    // Fecha dropdown ao clicar fora
-    document.addEventListener('click', function(e) {
-        if (!dropdown.contains(e.target)) {
-            dropdown.classList.remove('open');
-            button.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // Fecha com ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            dropdown.classList.remove('open');
-            button.setAttribute('aria-expanded', 'false');
-            button.blur();
-        }
-    });
-});
+}, 3000);
 </script>
-</body>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var dropdown = document.getElementById("reportsDropdown");
+        if (!dropdown) return;
+
+        var button = dropdown.querySelector(".dropbtn");
+
+        // Toggle via click (útil para touch)
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          var expanded = dropdown.classList.toggle("open");
+          // atualiza aria-expanded para acessibilidade
+          button.setAttribute("aria-expanded", expanded ? "true" : "false");
+        });
+
+        // Fecha dropdown ao clicar fora
+        document.addEventListener("click", function (e) {
+          if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove("open");
+            button.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        // Fecha com ESC
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            dropdown.classList.remove("open");
+            button.setAttribute("aria-expanded", "false");
+            button.blur();
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
