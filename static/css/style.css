@@ -1,325 +1,167 @@
-
-/* =============================== */
-/*          ESTILOS GERAIS         */
-/* =============================== */
-
 body {
-    background-color: #f7f7f7;
-    font-family: 'Garamond', serif;
+    background: #f4f4f4;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
-/* =============================== */
-/*            CABEÇALHO            */
-/* =============================== */
-
+/* Cabeçalho */
 .header {
-    background: #1a237e;
+    background: #0F4C75;
     color: #ffffff;
     text-align: center;
-    padding: 0;
+    padding: 5px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .header h1 {
-    font-family: 'Merriweather', serif;
-    margin: 0;
-    font-size: 26px;
-    padding: 15px 0;
+    margin: 30px;
+    font-size: 32px;
+    font-weight: 600;
 }
 
-/* =============================== */
-/*          NAVEGAÇÃO              */
-/* =============================== */
-
+/* Navegação */
 .nav {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 12px;
+    align-items: center;
+    gap: 16px;
     flex-wrap: wrap;
-    background-color: #1E3A8A;
-    padding: 8px 0;
+    padding: 15px 0;
+    background-color: #3282B8;
 }
 
-.nav a {
+.nav a, .dropbtn {
     color: #ffffff;
     text-decoration: none;
-    font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.nav a i {
-    margin-right: 6px;
-}
-
-.nav a:hover {
-    background-color: #ffffff;
-    color: #1a237e;
-}
-
-/* =============================== */
-/*           CONTEÚDO              */
-/* =============================== */
-
-.content {
-    max-width: 900px;
-    margin: 40px auto;
-    background: #F3F4F6;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-/* =============================== */
-/*             RODAPÉ              */
-/* =============================== */
-
-.footer {
-    text-align: center;
-    background: #1a237e;
-    color: #F3F4F6;
-    padding: 15px 0;
-    margin-top: 0;
-    font-size: 14px;
-}
-
-/* =============================== */
-/*        PÁGINA INICIAL (HOME)    */
-/* =============================== */
-
-.home-container {
-    text-align: center;
-    padding: 20px 10px;
-}
-
-.home-header h1 {
-    color: #1a237e;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.home-header p {
-    color: #333;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-}
-
-/* =============================== */
-/*         COLABORADORES           */
-/* =============================== */
-
-.colaboradores-section {
-    margin-top: 30px;
-}
-
-.colaboradores-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.colaborador-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #fff;
-    border-radius: 12px;
-    padding: 15px 20px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-}
-
-.foto-colaborador {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 15px;
-}
-
-.colaborador-info {
-    text-align: left;
-    flex-grow: 1;
-}
-
-.ver-todos {
-    margin-top: 20px;
-}
-
-/* =============================== */
-/*             BOTÕES              */
-/* =============================== */
-
-button,
-input[type="submit"] {
-    background-color: #1E3A8A;
-    color: #F3F4F6;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: 'Garamond', serif;
+    font-weight: 500;
     font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 6px;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-button:hover,
-input[type="submit"]:hover {
-    background-color: #3B82F6;
+.nav a:hover, .dropbtn:hover {
+    background-color: #a4bfd1;
+    color: #000;
     transform: scale(1.05);
 }
 
-/* Botões específicos */
-.btn-azul,
-.btn-vermelho {
-    display: inline-block;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 500;
-    padding: 8px 18px;
+/* Conteúdo */
+.content {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Rodapé */
+.footer {
+    text-align: center;
+    background: #0F4C75;
+    color: #ffffff;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+/* Botões */
+button, input[type="submit"] {
+    background-color: #3282B8;
+    color: #ffffff;
     border: none;
+    padding: 12px 24px;
     border-radius: 8px;
-    text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-/* Botão azul (Editar) */
-.btn-azul {
-    background-color: #0d3b8c;
-}
-
-.btn-azul:hover {
-    background-color: #3B82F6;
-    color: #ffffff;
-    transform: scale(1.03);
-}
-
-/* Botão vermelho (Excluir) */
-.btn-vermelho {
-    background-color: #c0392b;
-}
-
-.btn-vermelho:hover {
-    background-color: #a31506;
-    color: #ffffff;
-    transform: scale(1.03);
-}
-
-/* Botão Novo Colaborador */
-.botao-novo {
-    display: inline-block;
-    background-color: #0d3b8c;
-    color: #ffffff;
     font-size: 16px;
     font-weight: 500;
-    padding: 10px 22px;
-    border: none;
-    border-radius: 8px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-/* =============================== */
-/*             TABELAS             */
-/* =============================== */
+button:hover, input[type="submit"]:hover {
+    background-color: #a4bfd1;
+    color: #000;
+    transform: scale(1.05);
+}
 
+/* Tabelas */
 table {
     width: 100%;
-    border-collapse: separate; /* <- muda aqui */
-    border-spacing: 0;         /* remove espaços entre células */
-    margin-top: 20px;
-    border-radius: 10px;       /* arredonda cantos */
-    overflow: hidden;          /* garante que o fundo arredonde */
+    border-collapse: collapse;
+    margin-top: 30px;
+    font-size: 15px;
 }
 
-table th,
-table td {
-    border: 1px solid #3B82F6;
-    padding: 12px 14px;
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 12px;
     text-align: left;
 }
 
 table th {
-    background-color: #1E3A8A;
-    color: #F3F4F6;
+    background-color: #0F4C75;
+    color: #ffffff;
 }
 
-/* =============================== */
-/*            LINKS GERAIS         */
-/* =============================== */
-
+/* Links gerais */
 a {
-    color: #1E3A8A;
+    color: #005f73;
 }
 
 a:hover {
-    color: #3B82F6;
+    color: #ce07bd;
 }
 
-/* =============================== */
-/*          MENU DROPDOWN          */
-/* =============================== */
-
+/* Dropdown */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-.dropbtn {
-    background: transparent;
-    color: #F3F4F6;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: 'Garamond', serif;
-    margin: 0 10px;
-    font-size: 16px;
-    padding: 6px 8px;
-}
-
 .dropdown-content {
     display: none;
     position: absolute;
-    right: 0;
-    background-color: #1E3A8A;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
     min-width: 220px;
     border-radius: 8px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
     z-index: 9999;
-    text-align: left;
-    padding: 6px 0;
+    overflow: hidden;
 }
 
 .dropdown-content a {
-    color: #F3F4F6;
-    padding: 10px 16px;
+    color: #333;
+    padding: 12px 16px;
     display: block;
     text-decoration: none;
-    white-space: nowrap;
+    transition: background-color 0.3s;
 }
 
-.dropdown-content a:hover,
-.dropdown-content a:focus {
-    background-color: #ffffff;
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
 }
 
-/* Mostrar menu ao passar o mouse */
 .dropdown:hover .dropdown-content,
 .dropdown.open .dropdown-content,
 .dropbtn:focus + .dropdown-content {
     display: block;
 }
 
-/* Responsividade */
+/* Responsivo */
 @media (max-width: 700px) {
+    .content {
+        margin: 20px;
+        padding: 20px;
+    }
+
     .dropdown-content {
-        right: auto;
         left: 0;
+        right: auto;
         min-width: 180px;
     }
 }
@@ -365,4 +207,99 @@ textarea::placeholder {
 }
 
 
+/* Botões pra editar e excluir */
+.btn-azul {
+    background-color: #1A73E8;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+}
 
+.btn-azul:hover {
+    background-color: #1558b0;
+    color: #fff !important;
+}
+
+.btn-vermelho {
+    background-color: #D93025;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.btn-vermelho:hover {
+    background-color: #b0251d;
+    color: #fff !important;
+}
+
+
+
+/* Container da lista */
+.colaboradores-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* Card de colaborador */
+.colaborador-card {
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Deixa info à esquerda e botão à direita */
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Foto */
+.foto-colaborador {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
+}
+
+/* Info do colaborador */
+.colaborador-info {
+    flex-grow: 1;
+}
+
+/* Botão Editar dentro do card */
+.colaborador-card .btn-azul {
+    margin-left: 20px;
+}
+
+/* Botão "Ver todos" centralizado */
+.ver-todos {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+/* ==== Botão exclusivo para "Ver todos os colaboradores" ==== */
+/* Estilo principal do botão */
+.btn-cinza {
+    background-color: #6c757d;  
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+/* Efeito quando o usuário passa o mouse */
+.btn-cinza:hover {
+    background-color: #5a6268; 
+    color: white;
+}
