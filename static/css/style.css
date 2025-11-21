@@ -109,10 +109,6 @@ button:hover {
 
 
 
-
-
-
-
 /* Tabelas */
 table {
     width: 100%;
@@ -138,7 +134,7 @@ a {
 }
 
 a:hover {
-    color: #ce07bd;
+    color: #60a5fa;
 }
 
 /* Dropdown */
@@ -378,41 +374,41 @@ textarea::placeholder {
 }
 
 
-/* dashboard */
-.dashboard-widgets {
+.widgets-container {
     display: flex;
     gap: 20px;
-    margin: 30px 0;
+    margin-bottom: 30px;
 }
 
 .widget-card {
     flex: 1;
     background: #ffffff;
-    padding: 25px;
-    border-radius: 14px;
+    padding: 20px;
+    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     text-align: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.widget-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-}
-
-/* Cores */
-.widget-card.total { border-left: 5px solid #1A73E8; }
-.widget-card.devolvidos { border-left: 5px solid #34C759; }
-.widget-card.pendentes { border-left: 5px solid #FF3B30; }
-
-.widget-card h2 {
-    font-size: 2.5rem;
-    margin: 0;
-    font-weight: 700;
+.widget-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .widget-card p {
-    margin: 6px 0 0;
-    font-size: 1.1rem;
-    color: #555;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Cores laterais */
+/* Você pode mudar as cores se quiser! */
+.widget-card.total {
+    border-left: 6px solid #3b82f6;       /* Azul */
+}
+
+.widget-card.emprestados {
+    border-left: 6px solid #eab308;       /* Amarelo */
+}
+
+.widget-card.devolvidos {
+    border-left: 6px solid #22c55e;       /* Verde */
 }

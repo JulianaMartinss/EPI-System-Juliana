@@ -2,13 +2,25 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from django.contrib import messages
 from .models import Colaborador
+from apps.epi.models import EPI
+from apps.emprestimos.models import Emprestimo
 
 class HomeView(TemplateView):
     template_name = 'colaboradores/home.html'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        # Últimos colaboradores (já existia)
         context['ultimos_colaboradores'] = Colaborador.objects.order_by('-id')[:5]
+
+        # Widgets do dashboard
+        context["total_epis"] = EPI.objects.count()
+        context["emprestados"] = Emprestimo.objects.filter(devolvido=False).count()
+        context["devolvidos"] = Emprestimo.objects.filter(devolvido=True).count()
+
         return context
+
 
 class ColaboradorList(ListView):
     model = Colaborador

@@ -2,13 +2,41 @@
 {% block title %}Início | Gerenciamento de EPI{% endblock %}
 {% block content %}
 
-<section class="home-container">
   <div class="home-header">
     <h1>Bem-vindo(a)!</h1>
     <p>
       Gerencie colaboradores, EPIs e empréstimos de forma simples e eficiente.
     </p>
   </div>
+
+  <section class="home-container">
+
+  <!-- 🔹 WIDGETS DE ESTOQUE -->
+<div class="widgets-container">
+
+  <a href="{% url 'listar_epis' %}" class="widget-link">
+    <div class="widget-card total">
+      <h3>Total de EPIs</h3>
+      <p>{{ total_epis }}</p>
+    </div>
+  </a>
+
+  <a href="{% url 'listar_emprestimos' %}" class="widget-link">
+    <div class="widget-card emprestados">
+      <h3>Emprestados</h3>
+      <p>{{ emprestados }}</p>
+    </div>
+  </a>
+
+  <a href="{% url 'listar_emprestimos' %}" class="widget-link">
+    <div class="widget-card devolvidos">
+      <h3>Devolvidos</h3>
+      <p>{{ devolvidos }}</p>
+    </div>
+  </a>
+
+</div>
+
 
   <div class="colaboradores-section">
     <h2>Últimos Colaboradores</h2>
@@ -57,3 +85,4 @@
 </section>
 
 {% endblock %}
+

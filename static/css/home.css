@@ -1,0 +1,52 @@
+/* ===== WIDGETS DO DASHBOARD ===== */
+
+.widgets-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.widget-card {
+    width: 180px;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.widget-card h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.widget-card p {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007BFF;
+    margin: 0;
+}
+
+/* cores opcionais */
+.widget-card.total p { color: #007bff; }
+.widget-card.emprestados p { color: #e67e22; }
+.widget-card.devolvidos p { color: #27ae60; }
+
+.widget-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.widget-link .widget-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.widget-link .widget-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.22);
+    cursor: pointer;
+}
