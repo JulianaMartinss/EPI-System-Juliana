@@ -1,7 +1,7 @@
 ﻿# Sistema de Gerenciamento de EPI (Equipamentos de Proteção Individual)
 
 **Autores:** Luiz Gabriel Gazolli dos Santos / Juliana Martins 
-**Projeto:** Mini Projeto Django - Atividade 6  
+**Projeto:** Mini Projeto Django 
 **Tema:** Sistema corporativo para controle de EPIs e colaboradores  
 
 ---
@@ -45,7 +45,7 @@ O sistema possui controle de autenticação e acesso via `/admin/` e `/accounts/
 
 ## 🧭 Estrutura de Pastas (principais)
 
-mini_projeto_django_loja/
+EPI-System-Juliana/
 │
 ├── manage.py
 ├── loja/ # Projeto base Django
@@ -69,7 +69,7 @@ mini_projeto_django_loja/
 
 ### 1️⃣ Clonar o repositório
 ```bash
-git clone https://github.com/Gubinha/mini_projeto_django_loja.git
+git clone [https://github.com/JulianaMartinss/EPI-System-Juliana.git]
 cd mini_projeto_django_loja
 git fetch origin
 git checkout epi
@@ -117,4 +117,5 @@ style: atualizar layout único
 Desenvolvido por Luiz Gabriel Gazolli dos Santos / Juliana Martins 
 
 Projeto Mini Loja - EPI | 2025
+
 
