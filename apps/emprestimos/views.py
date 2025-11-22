@@ -12,10 +12,12 @@ class EmprestimoForm(forms.ModelForm):
         model = Emprestimo
         fields = ['colaborador', 'epi', 'quantidade', 'previsao_devolucao']
 
+
 @login_required
 def listar_emprestimos(request):
     emprestimos = Emprestimo.objects.all().order_by('-data_emprestimo')
     return render(request, 'emprestimos/listar.html', {'emprestimos': emprestimos})
+
 
 @login_required
 def criar_emprestimo(request):
@@ -25,10 +27,29 @@ def criar_emprestimo(request):
             emprestimo = form.save(commit=False)
             epi = emprestimo.epi
 
-            if emprestimo.quantidade > epi.quantidade:
-                messages.error(request, f"Estoque insuficiente. Apenas {epi.quantidade} disponíveis.")
-                return redirect('listar_emprestimos')
+            # ❗ Bloqueia quantidade zero ou negativa
+            if emprestimo.quantidade <= 0:
+                messages.error(request, "A quantidade deve ser maior que zero.")
+                return render(request, 'emprestimos/form.html', {
+                    'form': form,
+                    'titulo': 'Registrar Empréstimo'
+                })
 
+            # ❗ Bloqueia emprestar mais do que o estoque disponível
+            if emprestimo.quantidade > epi.quantidade:
+                quant = epi.quantidade
+                txt = "disponível" if quant == 1 else "disponíveis"
+
+                messages.error(
+                    request,
+                    f"Estoque insuficiente. Apenas {quant} {txt}."
+                )
+                return render(request, 'emprestimos/form.html', {
+                    'form': form,
+                    'titulo': 'Registrar Empréstimo'
+                })
+
+            # Atualiza estoque
             epi.quantidade -= emprestimo.quantidade
             epi.save()
 
@@ -37,18 +58,22 @@ def criar_emprestimo(request):
 
             messages.success(request, "Empréstimo registrado com sucesso!")
             return redirect('listar_emprestimos')
+
     else:
         form = EmprestimoForm()
 
     return render(request, 'emprestimos/form.html', {'form': form, 'titulo': 'Registrar Empréstimo'})
 
+
 @login_required
 def devolver_epi(request, id):
     emprestimo = get_object_or_404(Emprestimo, id=id)
+
     if not emprestimo.devolvido:
         emprestimo.devolvido = True
         emprestimo.epi.quantidade += emprestimo.quantidade
         emprestimo.epi.save()
         emprestimo.save()
         messages.success(request, "EPI devolvido com sucesso!")
+
     return redirect('listar_emprestimos')

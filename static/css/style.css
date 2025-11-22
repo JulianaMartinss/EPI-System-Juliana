@@ -11,7 +11,7 @@ body {
     background: #0F4C75;
     color: #ffffff;
     text-align: center;
-    padding: 5px 0;
+    padding: 1px 0;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -29,7 +29,7 @@ body {
     gap: 16px;
     flex-wrap: wrap;
     padding: 15px 0;
-    background-color: #3282B8;
+     background-color: rgba(50, 130, 184, 0.5);
 }
 
 .nav a, .dropbtn {
@@ -411,4 +411,14 @@ textarea::placeholder {
 
 .widget-card.devolvidos {
     border-left: 6px solid #22c55e;       /* Verde */
+}
+
+
+.alerta {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #f5c6cb;
 }
