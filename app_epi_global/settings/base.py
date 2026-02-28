@@ -1,24 +1,26 @@
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent 
 
 SECRET_KEY = 'CHANGE-ME-IN-PROD'
 
 INSTALLED_APPS = [
+    # Apps padrão do Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     # Terceiros
     'rest_framework',
+    
     # Apps do projeto
     'apps.colaboradores',
     'apps.epi',
     'apps.emprestimos',
     'relatorios',
-    
 ]
 
 MIDDLEWARE = [
@@ -36,7 +38,7 @@ ROOT_URLCONF = 'app_epi_global.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],  # Add this line
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,8 +73,9 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Certifique-se de que este diretório existe
+]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
