@@ -56,7 +56,7 @@ def criar_emprestimo(request):
             emprestimo.responsavel = request.user
             emprestimo.save()
 
-            messages.success(request, "Empréstimo registrado com sucesso!")
+            messages.success(request, "✔ Empréstimo registrado com sucesso!")
             return redirect('listar_emprestimos')
 
     else:
@@ -74,6 +74,6 @@ def devolver_epi(request, id):
         emprestimo.epi.quantidade += emprestimo.quantidade
         emprestimo.epi.save()
         emprestimo.save()
-        messages.success(request, "EPI devolvido com sucesso!")
+        messages.success(request, "✔ EPI devolvido com sucesso!")
 
     return redirect('listar_emprestimos')
