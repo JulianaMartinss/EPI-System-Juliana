@@ -1,15 +1,17 @@
 from selenium import webdriver
-import time
+from selenium.webdriver.chrome.options import Options
 
 def test_abrir_sistema():
 
-    driver = webdriver.Chrome()
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
 
-    try:
-        driver.get("http://127.0.0.1:8000/")
-        time.sleep(3)
+    driver = webdriver.Chrome(options=options)
 
-        assert "EPI" in driver.page_source
+    driver.get("http://127.0.0.1:8000/")
 
-    finally:
-        driver.quit()
+    assert "EPI" in driver.page_source
+
+    driver.quit()
