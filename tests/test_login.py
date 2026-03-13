@@ -1,7 +1,9 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-def test_abrir_sistema():
+@pytest.mark.django_db
+def test_abrir_sistema(live_server):
 
     options = Options()
     options.add_argument("--headless")
@@ -10,7 +12,7 @@ def test_abrir_sistema():
 
     driver = webdriver.Chrome(options=options)
 
-    driver.get("http://127.0.0.1:8000/")
+    driver.get(live_server.url)
 
     assert "EPI" in driver.page_source
 
